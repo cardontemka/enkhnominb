@@ -1,0 +1,86 @@
+/* Global Styles for EnkhNomin Portfolio */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body / html */
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Хажуу scroll-г хаах */
+  font-family: 'Inter', sans-serif;
+  background-color: #000000;
+  color: #FFD700;
+  scroll-behavior: smooth;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Main container */
+main {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Section spacing */
+section {
+  padding: 80px 20px;
+}
+
+@media (min-width: 768px) {
+  section {
+    padding: 120px 40px;
+  }
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  padding: 40px 20px;
+  background-color: #111;
+  color: #FFD700; /* Алтлаг шар */
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap; /* олон link бол wrap хийнэ */
+}
+
+@media (max-width: 768px) {
+  .footer-links {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
+
+/* Scrollbar hide for x-axis */
+body::-webkit-scrollbar {
+  height: 0px;
+  width: 0px;
+}
+
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
