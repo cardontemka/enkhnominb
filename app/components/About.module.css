@@ -2,7 +2,6 @@
     padding: 120px 0;
 }
 
-
 .container {
     display: flex;
     align-items: center;
@@ -15,12 +14,17 @@
 }
 
 
-.image {
+.imageWrap {
     flex: 1;
-    background: #ddd;
-    border-radius: 4px;
-    aspect-ratio: 16 / 9;
-    width: 100%;
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #111;
+}
+
+.image {
+    object-fit: cover;
 }
 
 
@@ -62,7 +66,11 @@
         justify-content: center;
     }
 
-    .image, .text {
-        flex: none;
+    .imageWrap {
+        width: 100%;
+    }
+
+    .title {
+        font-size: 28px;
     }
 }

@@ -46,13 +46,17 @@
     flex-direction: row-reverse;
 }
 
-
 .thumb {
     flex: 1;
-    background: #ddd;
-    border-radius: 4px;
+    position: relative;
     aspect-ratio: 16 / 9;
-    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #111;
+}
+
+.image {
+    object-fit: cover;
 }
 
 .textContainer {
@@ -67,7 +71,7 @@
     font-size: 40px;
 }
 
-.text {
+.description {
     color: #FFD700;
     margin: 5px;
 }
@@ -87,13 +91,19 @@
         flex: none;
     }
 
-    .thumb {
+    /* .thumb {
         width: 100%;
         margin-left: calc(-50vw + 50%);
         margin-right: calc(-50vw + 50%);
         border-radius: 0;
         aspect-ratio: 16 / 9;
+    } */
+
+    .thumb {
+        width: 100%;
+        aspect-ratio: 4 / 3;
     }
+
 
     .textContainer {
         width: 100%;
