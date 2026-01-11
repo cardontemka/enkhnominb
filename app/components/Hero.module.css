@@ -1,60 +1,79 @@
 .hero {
-    min-height: 100vh;
-    width: 100%;
-    background: linear-gradient(135deg, #000000, #FFD700);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
+/* VIDEO */
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* OVERLAY */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.75),
+    rgba(30, 30, 30, 0.35)
+  );
+  z-index: 1;
+}
+
+/* CONTENT */
 .content {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transform: translateY(50px);
-    animation: fadeSlideUp 1s ease-out forwards;
-    animation-delay: 0.3s;
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
 }
 
 .title {
-    font-family: 'Playfair Display', serif;
-    font-size: 56px;
-    max-width: 700px;
-    justify-content: center;
-    align-items: center;
-    animation: fadeSlideUp 1s ease-out forwards;
-    animation-delay: 0.5s;
+  font-family: 'Playfair Display', serif;
+  font-size: 56px;
+  color: #FFD700;
+  animation: titleFadeOut 5s ease forwards;
 }
 
-.text {
-    font-size: 18px;
-    margin-top: 16px;
+@keyframes titleFadeOut {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 
-    animation: fadeSlideUp 1s ease-out forwards;
-    animation-delay: 0.7s;
+  20% { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  60% {
+    opacity: 1;
+
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
-/* Keyframes for fade + slide up */
-@keyframes fadeSlideUp {
-    0% {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-/* Responsive */
+/* MOBILE */
 @media (max-width: 768px) {
-    .title {
-        font-size: 36px;
-    }
+  .title {
+    font-size: 36px;
+  }
+
+  .text {
+    font-size: 16px;
+  }
 }

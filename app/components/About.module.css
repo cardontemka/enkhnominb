@@ -1,76 +1,115 @@
 .about {
-    padding: 120px 0;
+  padding: 120px 0 60px 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 0.6s ease-out;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .container {
-    display: flex;
-    align-items: center;
-    gap: 48px;
-    text-decoration: none;
-    color: inherit;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  color: inherit;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
+/* container-дээ flex:1 бүү ашигла, textContainer-ийн width-г container-аас хамааруул */
+.textContainer {
+  flex: 0 1 50%; /* width нь container-ийн 50%, shrink/ grow тохируулах */
+  min-width: 300px; /* жижиг дэлгэцэд хэт жижиг болохоос сэргийлнэ */
+}
 
+.textContainer p {
+  font-size: 16px;
+  line-height: 1.8; /* Өмнө байсан 1.8, хүсвэл 2.0 болгож нэмэх боломжтой */
+  margin: 20px 0;
+  white-space: pre-wrap; /* wrap хэвээр үлдээж байна */
+}
+
+/* image container */
 .imageWrap {
-    flex: 1;
-    position: relative;
-    aspect-ratio: 1 / 1;
-    border-radius: 6px;
-    overflow: hidden;
-    background: #111;
+  flex: 0 1 50%;
+  min-width: 300px;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #111;
 }
 
 .image {
-    object-fit: cover;
+  object-fit: cover;
 }
 
-
-.textContainer {
-    flex: 1;
-}
-
-
+/* title + underline */
 .title {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    position: relative;
-    display: inline-flex;
-    padding-bottom: 12px;
-    color: #FFD700;
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  position: relative;
+  display: block; /* inline-flex → block болгосон */
+  padding-bottom: 12px;
+  color: #FFD700;
 }
 
 .title::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #FFD700;
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #FFD700;
 }
 
+/* text container-ийн text styling */
 .text {
-    font-size: 16px;
-    line-height: 1.6;
-    margin: 20px 0;
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 20px 0;
 }
 
+/* Typing line effect хэвээр үлдээж байна */
+.typingLine {
+  display: block;
+  overflow: hidden;
+  white-space: pre-wrap;
+  border-right: 2px solid rgba(255, 215, 0, 0.8);
+  width: 100%;
+  animation: typing 2s steps(100, end) forwards;
+  animation-play-state: paused;
+  margin-bottom: 16px;
+}
+
+.visible .typingLine {
+  animation-play-state: running;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; border-right-color: transparent; }
+}
 
 @media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        gap: 24px;
-        justify-content: center;
-    }
+  .container {
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center;
+  }
 
-    .imageWrap {
-        width: 100%;
-    }
+  .imageWrap,
+  .textContainer {
+    width: 100%;
+    flex: unset;
+  }
 
-    .title {
-        font-size: 28px;
-    }
+  .title {
+    font-size: 28px;
+  }
 }

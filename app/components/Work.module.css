@@ -1,7 +1,12 @@
 .work {
     padding: 120px 0;
+    opacity: 0;
+    transition: opacity 2s ease-out, transform 0.6s ease-out;
 }
 
+.visible {
+    opacity: 1;
+}
 
 .container {
     max-width: 1100px;
@@ -46,14 +51,26 @@
     flex-direction: row-reverse;
 }
 
-.thumb {
+.thumbLink {
     flex: 1;
-    position: relative;
-    aspect-ratio: 16 / 9;
-    border-radius: 6px;
-    overflow: hidden;
-    background: #111;
+    display: block;
 }
+
+.thumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.thumbLink:hover .thumb {
+    transform: scale(1.04);
+    filter: brightness(0.9);
+}
+
 
 .image {
     object-fit: cover;
@@ -65,15 +82,46 @@
     flex-direction: column;
 }
 
-.title {
-    color: #FFD700;
-    margin: 5px;
+.textLink {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
+.textLink h3 {
+    position: relative;
+    display: inline-block;
+    margin: 20px 0;
     font-size: 40px;
 }
 
+.textLink h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width 0.4s ease;
+}
+
+.textLink:hover h3::after {
+    width: 100%;
+}
+
 .description {
-    color: #FFD700;
-    margin: 5px;
+    opacity: 0.8;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.open {
+    -webkit-line-clamp: unset;
 }
 
 @media (max-width: 768px) {
@@ -83,25 +131,23 @@
         flex-direction: column;
         gap: 24px;
         justify-content: center;
-        margin-bottom: 64px;
+        margin-bottom: 34px;
+    }
+
+    .thumbLink {
+        flex: none;
+        display: block;
+        width: 100%;
     }
 
     .thumb,
     .text {
-        flex: none;
+        flex: unset;
     }
 
-    /* .thumb {
-        width: 100%;
-        margin-left: calc(-50vw + 50%);
-        margin-right: calc(-50vw + 50%);
-        border-radius: 0;
-        aspect-ratio: 16 / 9;
-    } */
-
     .thumb {
-        width: 100%;
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 4/3;
+        /* portrait feel */
     }
 
 
