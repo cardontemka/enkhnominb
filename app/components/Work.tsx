@@ -7,13 +7,15 @@ import { useInView } from '../hooks/useInView'
 const works = [
   {
     title: 'US / Бид',
-    description: 'Best Film — Beyond the Blue Sky International Queer Film Festival (2025)',
+    recognition: 'Best Film — Beyond the Blue Sky International Queer Film Festival (2025)',
+    description: 'A mother returns to Mongolia after years abroad to begin life anew with her daughter. When the daughter reveals a truth that challenges inherited values, the mother confronts the tension between social norms and maternal love. \n\nDirector’s Note: The film examines generational and ideological distance through a mother raised by socialist values and a daughter shaped by a capitalist environment. Their conflict reflects how identity and belief are transmitted, questioned, and reshaped within a family.',
     link: 'https://www.youtube.com/watch?v=MK5ZnrP4DRw',
     image: '/works/film1.jpg',
   },
   {
     title: 'Raising a Success',
-    description: 'Official Selection — 16th International Children’s Film Festival',
+    recognition: 'Official Selection — 16th International Children’s Film Festival',
+    description: 'A mother attempts to shape her daughter into the embodiment of her own unfulfilled dreams. As the daughter quietly pursues a different passion, a subtle conflict emerges between expectation and individuality. \n\nDirector’s Note: This dialogue-free film explores the silent pressure many Asian students experience within their families. \n Through visual metaphor rather than words, I aimed to express how parental ambition can unintentionally silence a child’s inner voice.',
     link: 'https://www.youtube.com/watch?v=1KPFe6ki1kw',
     image: '/works/film2.png',
   },
@@ -21,7 +23,7 @@ const works = [
     title: 'Place4Hope — Campfire, 2025–2026',
     description: 'As part of Place4Hope’s global climate-action programme, I participated in Campfire Songs, an international 360° filmmaking project exploring resilience, hope, and storytelling in a world shaped by climate crisis. Collaborating with young filmmakers from over 15 countries, I filmed the Mongolian segment and contributed an original poem featured in the final film.',
     link: 'https://rosettalife.org/current-projects/place4hope-25/',
-    image: '/works/yes.jpg',
+    image: '/works/other.jpg',
   },
 ]
 
@@ -52,14 +54,39 @@ export default function Work() {
                 <a href={work.link} className={styles.textLink}>
                   <h3>{work.title}</h3>
                 </a>
-                <p
-                  className={`${styles.description} ${isOpen ? styles.open : ''}`}
-                  onClick={() =>
-                    setActiveIndex(isOpen ? null : index)
-                  }
-                >
-                  {work.description}
-                </p>
+
+                {work.recognition && (
+                  <p className={styles.recognition}>{work.recognition}</p>
+                )}
+
+                {/* {work.description && (
+                  <p
+                    className={`${styles.description} ${isOpen ? styles.open : ''}`}
+                  >
+                    {work.description}
+                    <span
+                      className={styles.readMore}
+                      onClick={() => setActiveIndex(isOpen ? null : index)}
+                    >
+                      {isOpen ? ' Show less' : ' … Read more'}
+                    </span>
+                  </p>
+                )} */}
+                {work.description && (
+                  <>
+                    <p
+                      className={`${styles.description} ${isOpen ? styles.open : ''}`}
+                    >
+                      {work.description}
+                    </p>
+                    <button
+                      className={styles.readMore}
+                      onClick={() => setActiveIndex(isOpen ? null : index)}
+                    >
+                      {isOpen ? 'Show less' : 'Read more'}
+                    </button>
+                  </>
+                )}
               </div>
             </div>
           )
